@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Pribadi NIKI</title>
+    <style>
+      /* General Body & Layout */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      hr {
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+
+      /* Profile & Header */
+      .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-header img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-container {
+        width: 80%;
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #f0eaea;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      .profile-table th,
+      .profile-table td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .profile-table th {
+        background-color: #7c7260;
+        color: white;
+        font-weight: bold;
+        width: 35%;
+      }
+
+      .profile-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .profile-table tr:hover {
+        background-color: #e9e9e9;
+      }
+
+      .profile-table td {
+        background-color: lch(26.4% 10.4 79.94);
+        color: white;
+      }
+
+      /* Blog Post Content */
+      .blog-post h2,
+      .blog-post h3 {
+        text-align: left;
+      }
+
+      .post-date {
+        font-size: 0.9em;
+        color: #666;
+        margin-top: -10px;
+      }
+
+      blockquote {
+        font-style: italic;
+        padding: 10px 20px;
+        margin: 20px 0;
+        border-left: 4px solid #7c7260;
+        background-color: #f9f9f9;
+      }
+
+      /* Artist Info Box */
+      .artist-info {
+        background-color: #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .artist-info h2 {
+        margin-top: 0;
+      }
+
+      .info-box p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .info-box b {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      /* Fan-art Section */
+      .title-brown {
+        color: #61543e;
+      }
+
+      .underline {
+        text-decoration: underline;
+      }
+
+      /* Album Grid */
+      .album-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        justify-items: center;
+        padding: 20px;
+      }
+
+      .album-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .album-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .album-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+
+      .album-card h2 {
+        font-size: 1.2em;
+        color: #333;
+        margin: 0 0 5px 0;
+      }
+
+      .album-card p {
+        font-size: 0.9em;
+        color: #666;
+        margin: 0;
+      }
+
+      /* Social Icons */
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icons img {
+        width: 40px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .social-icons a:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .form-actions {
+        margin-top: 20px;
+      }
+
+      .form-actions button {
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 1em;
+      }
+
+      .form-actions button:hover {
+        background-color: #496383;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blog Pribadi NIKI</h1>
+      <hr />
+    </header>
+
+    <main>
+      <div class="profile-header">
+        <img src="assets/img/Nicoles.jpg" alt="Foto Profil NIKI" />
+        <p>Hello, this is NIKI.</p>
+      </div>
+
+      <section class="profile-container">
+        <h2>Profil Singkat</h2>
+        <table class="profile-table">
+          <tbody>
+            <tr>
+              <th>Nama Asli</th>
+              <td>Nicole Zefanya</td>
+            </tr>
+            <tr>
+              <th>Nama Panggung</th>
+              <td>NIKI</td>
+            </tr>
+            <tr>
+              <th>Lahir</th>
+              <td>24 Januari 1999</td>
+            </tr>
+            <tr>
+              <th>Tempat Lahir</th>
+              <td>Jakarta, Indonesia</td>
+            </tr>
+            <tr>
+              <th>Genre</th>
+              <td>R&B, Indie folk</td>
+            </tr>
+            <tr>
+              <th>Posisi</th>
+              <td>Vokalis</td>
+            </tr>
+            <tr>
+              <th>Almamater</th>
+              <td>Lipscomb University, Sekolah Pelita Harapan Lippo Village</td>
+            </tr>
+            <tr>
+              <th>Label</th>
+              <td>88rising, EMPIRE Distribution</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="blog-post">
+        <h2 style="text-align: left">Perjalanan musik dan inspirasi</h2>
+        <p class="post-date">Diposting pada 1 Agustus 2025</p>
+        <p>
+          Buatku, musik selalu jadi cara paling jujur untuk bercerita. Melalui
+          lagu-lagu, aku bisa menuangkan pengalaman, perasaan, dan potongan
+          hidup yang mungkin juga pernah dialami orang lain. Aku percaya musik
+          bukan hanya soal suara, tapi juga tentang cerita dan koneksi yang
+          tercipta di antara kita.
+        </p>
+
+        <h2 style="text-align: left">Hal-hal yang menginspirasi saya</h2>
+        <ol>
+          <li>
+            Musik dan Seni
+            <ul>
+              <li>Puisi dan Tulisan</li>
+              <li>Eksperimen dengan suara baru</li>
+            </ul>
+          </li>
+          <li>
+            Pengalaman hidup
+            <ul>
+              <li>Tinggal di berbagai tempat</li>
+              <li>Bertemu dengan orang-orang yang meninggalkan jejak</li>
+            </ul>
+          </li>
+          <li>
+            Kehidupan sehari-hari
+            <ul>
+              <li>Percakapan kecil yang berarti</li>
+              <li>Kenangan masa lalu</li>
+            </ul>
+          </li>
+        </ol>
+
+        <p>
+          aku juga suka banget share playlist atau lagu yang lagi aku repeat
+          belakangan ini. kalau kalian penasaran, bisa klik link ini buat
+          <a
+            href="https://open.spotify.com/album/0TMmGHybMKtsjBBEmwXHkF?si=N9Ne9GqdRPizX4fJbYOxQQ"
+            target="_blank"
+            >dengerin playlist favoritku</a
+          >.
+        </p>
+
+        <blockquote>
+          “sometimes, looking back is the only way to move forward.”
+        </blockquote>
+
+        <hr />
+
+        <p>
+          sebuah momen yang paling berkesan buat aku adalah saat berdiri di atas
+          panggung dan melihat lautan cahaya dari penonton. rasanya kayak dunia
+          berhenti sebentar, dan semua energi, tawa, sampai air mata ketemu di
+          satu tempat yang sama. itu selalu jadi pengingat kenapa aku jatuh
+          cinta sama musik.
+        </p>
+
+        <p>seperti yang sering aku percaya,</p>
+        <blockquote>
+          “music will always find its way to connect people who were never meant
+          to meet otherwise.”
+        </blockquote>
+        <p>
+          dan itu selalu jadi inspirasi aku untuk terus nulis, bernyanyi, dan
+          berbagi cerita lewat lagu.
+        </p>
+      </section>
+
+      <hr />
+
+      <section class="artist-info">
+        <h2>Mengenai NIKI</h2>
+        <div class="info-box">
+          <p><b>Nama Panggung</b></p>
+          <p>NIKI</p>
+          <br />
+          <p><b>Nama Asli</b></p>
+          <p>Nicole Zefanya</p>
+          <br />
+          <p><b>Profesi</b></p>
+          <p>penyanyi, penulis lagu</p>
+          <br />
+          <p><b>Label</b></p>
+          <p>88rising</p>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="fan-art">
+        <h1 class="title-brown">Fan-art dan Karya Favorit</h1>
+        <p>
+          aku sering banget lihat karya seni yang terinspirasi dari musikku, dan
+          itu selalu bikin aku merasa dekat sama kalian.
+        </p>
+        <p>
+          salah satu yang paling aku suka berjudul “Take A Chance With Me” dari
+          album nicole, karya itu berhasil menangkap perasaan yang aku tuangin
+          di lagu dengan cara yang indah banget.
+        </p>
+        <br />
+        <p>
+          aku juga suka membaca puisi atau tulisan kalian, karena tiap kata
+          selalu punya jiwa sendiri.
+        </p>
+        <p><span class="underline">stay tuned</span></p>
+      </section>
+
+      <hr />
+
+      <section class="album-section">
+        <h1 class="album-heading">ALBUM</h1>
+        <div class="album-grid">
+          <a
+            href="https://open.spotify.com/album/1u69qM5ATwhuRSHQd3FD6s?si=XdMywEIGQBSq8wE3CmA7xA"
+            class="album-card"
+            target="_blank"
+          >
+            <h2>Zephyr</h2>
+            <p>Album musik NIKI</p>
+            <p>2018</p>
+            <img src="assets/img/Zephyr.jpg" alt="Sampul Album Zephyr" />
+          </a>
+          <a
+            href="https://open.spotify.com/album/312cHRlzeS4VuD1RHzAGIt?si=6QKv6YMtTmCELWZN2BEbdw"
+            class="album-card"
+            target="_blank"
+          >
+            <h2>MOONCHILD</h2>
+            <p>Album musik NIKI</p>
+            <p>2020</p>
+            <img src="assets/img/moonchild.jpg" alt="Sampul Album MOONCHILD" />
+          </a>
+          <a
+            href="https://open.spotify.com/album/0TMmGHybMKtsjBBEmwXHkF?si=h21-zJsCSSyIlPoY7AIUXA"
+            class="album-card"
+            target="_blank"
+          >
+            <h2>Nicole</h2>
+            <p>Album musik NIKI</p>
+            <p>2022</p>
+            <img src="assets/img/Nicoles.jpg" alt="Sampul Album Nicole" />
+          </a>
+          <a
+            href="https://open.spotify.com/album/3g73KFee4dbxDq5vTmX92S?si=9pVywwm5SLGqe1VeMAUi7Q"
+            class="album-card"
+            target="_blank"
+          >
+            <h2>Buzz</h2>
+            <p>Album musik NIKI</p>
+            <p>2024</p>
+            <img src="assets/img/Buzz.jpg" alt="Sampul Album Buzz" />
+          </a>
+        </div>
+      </section>
+
+      <hr />
+
+      <section class="social-icons">
+        <a
+          href="https://www.tiktok.com/@niki?_t=ZS-8zWXAj4R2kU&_r=1"
+          target="_blank"
+        >
+          <img src="assets/img/tiktok.jpg" alt="Ikon TikTok" />
+        </a>
+        <a
+          href="https://www.instagram.com/nikizefanya?igsh=MXNyM2N0ZjR4bGxndg=="
+          target="_blank"
+        >
+          <img src="assets/img/ig.jpg" alt="Ikon Instagram" />
+        </a>
+        <a
+          href="https://open.spotify.com/artist/2kxP07DLgs4xlWz8YHlvfh?si=POzLse0oQrKdFdHBIOe5dA"
+          target="_blank"
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png"
+            alt="Ikon Spotify"
+          />
+        </a>
+      </section>
+
+      <hr />
+
+      <section class="contact-form">
+        <h1>Tinggalkan Pesan untuk NIKI</h1>
+        <form action="/submit-form" method="post">
+          <div class="form-group">
+            <label for="nama_army">Nama pasien NIKI:</label>
+            <input type="text" id="nama_army" name="nama_army" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="pesan">Pesan:</label>
+            <textarea
+              id="pesan"
+              name="pesan"
+              rows="6"
+              placeholder="Tulis pesan kalian untuk NIKI di sini..."
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="mood">Mood hari ini:</label>
+            <select id="mood" name="mood">
+              <option value="sangat_bahagia">Sangat Bahagia</option>
+              <option value="bahagia">Bahagia</option>
+              <option value="netral">Netral</option>
+              <option value="sedih">Sedih</option>
+              <option value="sangat_sedih">Sangat Sedih</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit">Kirim Pesan</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <hr />
+      <p>Hak Cipta © 2025 Blog Pribadi NIKI. Semua hak dilindungi.</p>
+    </footer>
+  </body>
+</html>
